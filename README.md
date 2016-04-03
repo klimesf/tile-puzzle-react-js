@@ -20,3 +20,14 @@ Clone the GitHub repo and install with `npm`. Then run webpack & feel free to ti
 npm install
 webpack --watch
 ```
+
+## Run
+
+You can use `webpack-dev-server` to run the puzzle.
+
+```
+npm install webpack-dev-server -g
+webpack-dev-server --content-base dist/
+```
+
+Then just navigate to `localhost:8080`.
