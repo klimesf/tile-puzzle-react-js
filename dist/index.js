@@ -54,11 +54,11 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _Game = __webpack_require__(159);
+	var _GameReact = __webpack_require__(159);
 
-	var _Game2 = _interopRequireDefault(_Game);
+	var _GameReact2 = _interopRequireDefault(_GameReact);
 
-	var _TilePuzzle = __webpack_require__(167);
+	var _TilePuzzle = __webpack_require__(162);
 
 	var _TilePuzzle2 = _interopRequireDefault(_TilePuzzle);
 
@@ -67,7 +67,7 @@
 	var tileStorage = new _TilePuzzle2.default();
 	tileStorage.init();
 
-	_reactDom2.default.render(_react2.default.createElement(_Game2.default, { tileStorage: tileStorage }), document.getElementById('game'));
+	_reactDom2.default.render(_react2.default.createElement(_GameReact2.default, { tileStorage: tileStorage }), document.getElementById('game'));
 
 /***/ },
 /* 1 */
@@ -19743,9 +19743,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Row = __webpack_require__(160);
+	var _RowReact = __webpack_require__(160);
 
-	var _Row2 = _interopRequireDefault(_Row);
+	var _RowReact2 = _interopRequireDefault(_RowReact);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19775,7 +19775,7 @@
 
 	            var rows = [];
 	            this.props.tileStorage.toRows().forEach(function (row) {
-	                rows.push(_react2.default.createElement(_Row2.default, { tiles: row, game: _this2 }));
+	                rows.push(_react2.default.createElement(_RowReact2.default, { tiles: row, game: _this2 }));
 	            });
 	            var gameWonWrapper = this.props.tileStorage.win ? _react2.default.createElement(
 	                'div',
@@ -19821,9 +19821,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Tile = __webpack_require__(161);
+	var _TileReact = __webpack_require__(161);
 
-	var _Tile2 = _interopRequireDefault(_Tile);
+	var _TileReact2 = _interopRequireDefault(_TileReact);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19849,7 +19849,7 @@
 
 	            var tiles = [];
 	            this.props.tiles.forEach(function (tile) {
-	                tiles.push(_react2.default.createElement(_Tile2.default, { tile: tile, game: _this2.props.game }));
+	                tiles.push(_react2.default.createElement(_TileReact2.default, { tile: tile, game: _this2.props.game }));
 	            });
 	            return _react2.default.createElement(
 	                'div',
@@ -19924,131 +19924,7 @@
 	exports.default = Tile;
 
 /***/ },
-/* 162 */,
-/* 163 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var Tile = function () {
-
-	    /**
-	     * Constructor.
-	     * @param {number|null} number
-	     */
-
-	    function Tile(number) {
-	        _classCallCheck(this, Tile);
-
-	        this.number = number;
-	        this.tilePosition = null;
-	        this.onSwitch = [];
-	    }
-
-	    /**
-	     * Sets TilePosition.
-	     * @param {TilePosition} tilePosition
-	     */
-
-
-	    _createClass(Tile, [{
-	        key: "setPosition",
-	        value: function setPosition(tilePosition) {
-	            this.tilePosition = tilePosition;
-	        }
-
-	        /**
-	         * Is the Tile empty?
-	         * @returns {boolean}
-	         */
-
-	    }, {
-	        key: "isEmpty",
-	        value: function isEmpty() {
-	            return this.number == null;
-	        }
-
-	        /**
-	         * Switches positions between tiles.
-	         * @param {Tile} tile
-	         */
-
-	    }, {
-	        key: "switchPositions",
-	        value: function switchPositions(tile) {
-	            if (this.isEmpty() || tile.isEmpty()) {
-	                var temp = this.tilePosition;
-	                this.setPosition(tile.tilePosition);
-	                tile.setPosition(temp);
-	            } else {
-	                throw "Cannot switch non-empty tiles.";
-	            }
-	        }
-
-	        /**
-	         * Adds onSwitch listener.
-	         * @param {TilePuzzle} listener
-	         */
-
-	    }, {
-	        key: "addOnSwitchListener",
-	        value: function addOnSwitchListener(listener) {
-	            this.onSwitch.push(listener);
-	        }
-
-	        /**
-	         *
-	         */
-
-	    }, {
-	        key: "switchTile",
-	        value: function switchTile() {
-	            var _this = this;
-
-	            this.onSwitch.forEach(function (listener) {
-	                listener.switchTiles(_this);
-	            });
-	        }
-	    }]);
-
-	    return Tile;
-	}();
-
-	exports.default = Tile;
-
-/***/ },
-/* 164 */,
-/* 165 */,
-/* 166 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var TilePosition = function TilePosition(rowNumber, rowPosition) {
-	    _classCallCheck(this, TilePosition);
-
-	    this.rowNumber = rowNumber;
-	    this.rowPosition = rowPosition;
-	};
-
-	exports.default = TilePosition;
-
-/***/ },
-/* 167 */
+/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20063,7 +19939,7 @@
 
 	var _Tile2 = _interopRequireDefault(_Tile);
 
-	var _TilePosition = __webpack_require__(166);
+	var _TilePosition = __webpack_require__(164);
 
 	var _TilePosition2 = _interopRequireDefault(_TilePosition);
 
@@ -20249,6 +20125,127 @@
 	}();
 
 	exports.default = TilePuzzle;
+
+/***/ },
+/* 163 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Tile = function () {
+
+	    /**
+	     * Constructor.
+	     * @param {number|null} number
+	     */
+
+	    function Tile(number) {
+	        _classCallCheck(this, Tile);
+
+	        this.number = number;
+	        this.tilePosition = null;
+	        this.onSwitch = [];
+	    }
+
+	    /**
+	     * Sets TilePosition.
+	     * @param {TilePosition} tilePosition
+	     */
+
+
+	    _createClass(Tile, [{
+	        key: "setPosition",
+	        value: function setPosition(tilePosition) {
+	            this.tilePosition = tilePosition;
+	        }
+
+	        /**
+	         * Is the Tile empty?
+	         * @returns {boolean}
+	         */
+
+	    }, {
+	        key: "isEmpty",
+	        value: function isEmpty() {
+	            return this.number == null;
+	        }
+
+	        /**
+	         * Switches positions between tiles.
+	         * @param {Tile} tile
+	         */
+
+	    }, {
+	        key: "switchPositions",
+	        value: function switchPositions(tile) {
+	            if (this.isEmpty() || tile.isEmpty()) {
+	                var temp = this.tilePosition;
+	                this.setPosition(tile.tilePosition);
+	                tile.setPosition(temp);
+	            } else {
+	                throw "Cannot switch non-empty tiles.";
+	            }
+	        }
+
+	        /**
+	         * Adds onSwitch listener.
+	         * @param {TilePuzzle} listener
+	         */
+
+	    }, {
+	        key: "addOnSwitchListener",
+	        value: function addOnSwitchListener(listener) {
+	            this.onSwitch.push(listener);
+	        }
+
+	        /**
+	         *
+	         */
+
+	    }, {
+	        key: "switchTile",
+	        value: function switchTile() {
+	            var _this = this;
+
+	            this.onSwitch.forEach(function (listener) {
+	                listener.switchTiles(_this);
+	            });
+	        }
+	    }]);
+
+	    return Tile;
+	}();
+
+	exports.default = Tile;
+
+/***/ },
+/* 164 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var TilePosition = function TilePosition(rowNumber, rowPosition) {
+	    _classCallCheck(this, TilePosition);
+
+	    this.rowNumber = rowNumber;
+	    this.rowPosition = rowPosition;
+	};
+
+	exports.default = TilePosition;
 
 /***/ }
 /******/ ]);

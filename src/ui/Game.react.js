@@ -1,5 +1,5 @@
 import React from 'react';
-import Row from './Row.js';
+import Row from './Row.react.js';
 
 export default class Game extends React.Component {
     constructor() {
