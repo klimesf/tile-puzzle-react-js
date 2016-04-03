@@ -1,0 +1,58 @@
+html, body {
+    text-align: center;
+    padding: 50px auto 0;
+    font-family: "Helvetica Neue", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#game {
+    width: 300px;
+    margin: 50px auto 0;
+    position: relative;
+}
+
+#game .row {
+    width: 300px;
+    height: 70px;
+    margin-bottom: 5px;
+    display: block;
+    clear: both;
+}
+
+.tile {
+    display: block;
+    float: left;
+    border: 2px solid black;
+    width: 70px;
+    height: 70px;
+    margin-right: 5px;
+    border-radius: 3px;
+    line-height: 70px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.tile.empty {
+    border: none;
+}
+
+#game .game-won-wrapper {
+    width: 295px;
+    height: 295px;
+    z-index: 100;
+    background-color: white;
+    opacity: 0.9;
+    text-align: center;
+    line-height: 295px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#game .game-won-wrapper > span {
+    opacity: 1;
+    color: black;
+}
