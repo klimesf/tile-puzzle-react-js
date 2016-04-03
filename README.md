@@ -11,3 +11,12 @@ Here, have some [computer science](https://www.cs.bham.ac.uk/~mdr/teaching/modul
 ![Fresh puzzle](https://github.com/klimesf/tile-puzzle-react-js/blob/master/doc/img/fresh.png)
 ### Solved puzzle
 ![Solved puzzle](https://github.com/klimesf/tile-puzzle-react-js/blob/master/doc/img/solved.png)
+
+## Installation
+
+Clone the GitHub repo and install with `npm`. Then run webpack & feel free to tinker!
+
+```
+npm install
+webpack --watch
+```
