@@ -10,10 +10,10 @@ export default class Game extends React.Component {
 
     render() {
         let rows = [];
-        this.props.tileStorage.toRows().forEach((row) => {
+        this.props.puzzle.toRows().forEach((row) => {
             rows.push(<Row tiles={row} game={this}/>);
         });
-        let gameWonWrapper = this.props.tileStorage.win ?
+        let gameWonWrapper = this.props.puzzle.win ?
             <div className="game-won-wrapper"><span>Congratulations, you have won!</span></div> : "";
         return <div className="game">{rows}{gameWonWrapper}</div>;
     }

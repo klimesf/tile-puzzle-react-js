@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Game from './ui/Game.react.js';
-import TileStorage from './model/TilePuzzle.js';
+import TilePuzzle from './model/TilePuzzle.js';
 
-let tileStorage = new TileStorage;
-tileStorage.init();
+let puzzle = new TilePuzzle;
+puzzle.init();
 
 ReactDOM.render(
-    <Game tileStorage={tileStorage}/>,
+    <Game puzzle={puzzle}/>,
     document.getElementById('game')
 );
